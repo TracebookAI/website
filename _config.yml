@@ -1,0 +1,4 @@
+# Disable Jekyll on GitHub Pages so the static HTML serves verbatim.
+# The site has no build step — just `index.html` + `assets/`.
+theme: null
+plugins: []

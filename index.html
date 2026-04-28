@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tracebook — AI tech support for machine OEMs</title>
+  <meta name="description" content="Tracebook turns your shelf of PDFs, your YouTube backlog, and your historical tickets into a sourced, cited AI tech support agent — running under your own logo and domain." />
+
+  <!-- Editorial typography (matches the retrieval-explainer videos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon — simple paper square with italic T -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FAF8F3'/%3E%3Ctext x='50%25' y='52%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-weight='600' font-size='20' fill='%231A1A1A'%3Et%3C/text%3E%3C/svg%3E">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Editorial palette + fonts. Mirrors marketing/.../retrieval-explainer/theme.ts.
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper:    '#FAF8F3',
+            paperDeep:'#F2EEE6',
+            ink:      '#1A1A1A',
+            inkSoft:  '#3D3D3D',
+            inkMute:  '#7A7A7A',
+            inkFaint: '#BDBDBD',
+            gold:     '#D4A93C',
+            goldSoft: '#F5E9C2',
+            dense:    '#E84F3D',
+            denseSoft:'#FBE3DF',
+            visual:   '#2D6E47',
+            visualSoft:'#D6E5DC',
+          },
+          fontFamily: {
+            display: ['Fraunces','Iowan Old Style','Georgia','serif'],
+            body:    ['"Public Sans"','-apple-system','sans-serif'],
+            mono:    ['"JetBrains Mono"','ui-monospace','Menlo','monospace'],
+          },
+          letterSpacing: {
+            eyebrow: '0.34em',
+            small:   '0.18em',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body {
+      background: #FAF8F3;
+      color: #1A1A1A;
+      font-family: 'Public Sans', sans-serif;
+      /* faint dotted grid — same trick the videos use */
+      background-image: radial-gradient(rgba(26,26,26,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      background-position: 30px 30px;
+    }
+    /* Fraunces wonk axis on display italics for character */
+    .wonk { font-variation-settings: '"opsz" 96, "SOFT" 100, "WONK" 1'; }
+    .wonk-sm { font-variation-settings: '"opsz" 32, "SOFT" 100, "WONK" 0'; }
+    .hairline { height: 1px; background: #1A1A1A; }
+    .hairline-gold { height: 2px; background: #D4A93C; }
+
+    /* Smooth scroll for anchor links */
+    html { scroll-behavior: smooth; }
+
+    /* Section reveal — minimal animation */
+    section { scroll-margin-top: 4rem; }
+
+    /* MRIIOT bug stays bottom-right of viewport on desktop */
+    .brand-bug {
+      mix-blend-mode: multiply;
+      filter: saturate(0.9);
+    }
+  </style>
+</head>
+
+<body class="font-body text-ink">
+
+<!-- ─── NAV ─────────────────────────────────────────────────────────── -->
+<header class="sticky top-0 z-40 border-b border-ink/10 bg-paper/85 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+    <a href="#" class="flex items-baseline gap-2">
+      <span class="font-display italic text-2xl font-medium text-ink wonk-sm">tracebook</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm">
+      <a href="#problem" class="text-inkSoft hover:text-ink">The problem</a>
+      <a href="#how" class="text-inkSoft hover:text-ink">How it works</a>
+      <a href="#features" class="text-inkSoft hover:text-ink">Features</a>
+      <a href="#faq" class="text-inkSoft hover:text-ink">FAQ</a>
+      <a href="mailto:cmisztur@mriiot.com" class="rounded-md bg-ink px-3 py-1.5 text-paper hover:bg-inkSoft">
+        Get a demo
+      </a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ─── HERO ────────────────────────────────────────────────────────── -->
+<section class="relative overflow-hidden">
+  <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:py-20 lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-5">
+      <div class="font-mono text-xs font-bold uppercase tracking-eyebrow text-gold">
+        ⌖ AI tech support · for machine OEMs
+      </div>
+
+      <h1 class="mt-6 font-display text-5xl font-medium leading-[0.98] tracking-tight text-ink md:text-6xl">
+        The 2 a.m. call <em class="italic wonk">answers itself.</em>
+      </h1>
+
+      <div class="mt-8 hairline-gold w-40"></div>
+
+      <p class="mt-8 max-w-xl font-display italic text-lg leading-relaxed text-inkSoft md:text-xl"
+         style="font-variation-settings: '&quot;opsz&quot; 24, &quot;SOFT&quot; 100, &quot;WONK&quot; 0;">
+        Tracebook turns your shelf of PDFs, your YouTube backlog, and
+        your resolved-ticket history into a sourced, cited AI tech
+        support agent — running under your brand.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="mailto:cmisztur@mriiot.com?subject=Tracebook%20demo"
+           class="inline-flex items-center gap-2 rounded-md bg-ink px-5 py-3 text-sm font-medium text-paper hover:bg-inkSoft">
+          Book a demo
+          <span class="font-mono text-xs">→</span>
+        </a>
+        <a href="#how"
+           class="inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-inkSoft">
+          See how it works
+        </a>
+      </div>
+
+      <div class="mt-10 flex items-center gap-3 text-xs text-inkMute">
+        <span class="font-mono uppercase tracking-eyebrow">live customer</span>
+        <span class="font-display italic text-inkSoft">Royal Master Grinders</span>
+      </div>
+
+      <p class="mt-6 max-w-md text-xs text-inkMute italic">
+        Watch a real diagnostic session resolve →
+      </p>
+    </div>
+
+    <!-- Animated chat replay -->
+    <div class="lg:col-span-7">
+      <div id="chat-demo" class="relative">
+        <div class="absolute -left-3 top-3 -z-10 h-full w-full rounded-md bg-gold/15"></div>
+        <article class="overflow-hidden rounded-md border border-ink/30 bg-paper shadow-[0_2px_24px_rgba(26,26,26,0.08)]">
+          <!-- Header strip mimics customer-portal session header -->
+          <header class="flex items-center justify-between border-b border-ink/15 bg-paperDeep/50 px-5 py-3">
+            <div class="flex items-baseline gap-3">
+              <span class="font-mono text-[10px] uppercase tracking-eyebrow text-gold">support session</span>
+              <span class="font-mono text-xs text-ink" id="chat-machine">Generation X · #SN-3648</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="inline-block h-2 w-2 rounded-full bg-visual"></span>
+              <span class="font-mono text-[10px] uppercase tracking-eyebrow text-inkMute">live</span>
+            </div>
+          </header>
+
+          <div id="chat-body" class="space-y-4 px-5 py-5 h-[520px] overflow-y-auto"></div>
+
+          <footer class="flex items-center justify-between border-t border-ink/15 bg-paperDeep/50 px-5 py-3">
+            <div class="font-mono text-[10px] uppercase tracking-eyebrow text-inkMute">
+              <span id="chat-status">tracebook.support · acme manufacturing</span>
+            </div>
+            <button id="chat-replay"
+                    class="hidden font-mono text-[10px] uppercase tracking-eyebrow text-ink hover:text-gold">
+              ↻ replay
+            </button>
+          </footer>
+        </article>
+        <div class="mt-3 text-[10px] uppercase tracking-eyebrow text-inkMute">
+          <span class="font-mono">a real diagnostic, replayed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── PROBLEM ─────────────────────────────────────────────────────── -->
+<section id="problem" class="border-t border-ink/10 bg-paperDeep/40 py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="font-display text-4xl font-medium leading-tight md:text-5xl">
+      The same questions, <em class="italic wonk">again and again.</em>
+    </h2>
+    <div class="mt-12 grid gap-10 md:grid-cols-3">
+      <article class="border-t-2 border-dense pt-6">
+        <div class="font-mono text-xs uppercase tracking-eyebrow text-dense">it's 2 a.m.</div>
+        <p class="mt-3 font-display text-2xl leading-snug">The customer wants help.</p>
+        <p class="mt-4 text-base leading-relaxed text-inkSoft">
+          Your service manager is asleep. The right answer is in a
+          400-page manual nobody else on the team has read cover-to-cover.
+          The customer ends up off-spec or off-line until morning.
+        </p>
+      </article>
+
+      <article class="border-t-2 border-dense pt-6">
+        <div class="font-mono text-xs uppercase tracking-eyebrow text-dense">scattered</div>
+        <p class="mt-3 font-display text-2xl leading-snug">Your knowledge is in eight places.</p>
+        <p class="mt-4 text-base leading-relaxed text-inkSoft">
+          Manuals in Dropbox, drawings on a shared drive, training videos
+          on YouTube, the <em>real</em> answers in a five-year-old email
+          thread. Even your senior tech can&rsquo;t find the one PDF where
+          it&rsquo;s documented.
+        </p>
+      </article>
+
+      <article class="border-t-2 border-dense pt-6">
+        <div class="font-mono text-xs uppercase tracking-eyebrow text-dense">looped</div>
+        <p class="mt-3 font-display text-2xl leading-snug">Same fix, twelve times a year.</p>
+        <p class="mt-4 text-base leading-relaxed text-inkSoft">
+          &ldquo;Linear motor not moving&rdquo; comes in twelve times a
+          year. The fix is always the cable transport module. Nobody
+          wrote it down where the next customer would find it.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── HOW IT WORKS ───────────────────────────────────────────────── -->
+<section id="how" class="border-t border-ink/10 py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="font-display text-4xl font-medium leading-tight md:text-5xl">
+      Three steps. <em class="italic wonk">No magic.</em>
+    </h2>
+
+    <ol class="mt-14 space-y-12">
+      <li class="grid gap-8 md:grid-cols-12">
+        <div class="md:col-span-2">
+          <div class="font-display text-7xl font-medium text-gold leading-none">①</div>
+        </div>
+        <div class="md:col-span-10">
+          <h3 class="font-display text-3xl font-medium">Upload what you&rsquo;ve got.</h3>
+          <p class="mt-3 max-w-3xl text-lg leading-relaxed text-inkSoft">
+            PDFs of operating manuals, electrical schematics, mechanical
+            drawings. YouTube links. Photos of HMI screens. Resolved
+            ticket threads from past support work. Tracebook indexes all
+            of it &mdash; per machine model, per customer.
+          </p>
+        </div>
+      </li>
+
+      <li class="grid gap-8 md:grid-cols-12">
+        <div class="md:col-span-2">
+          <div class="font-display text-7xl font-medium text-gold leading-none">②</div>
+        </div>
+        <div class="md:col-span-10">
+          <h3 class="font-display text-3xl font-medium">Your customer asks a question.</h3>
+          <p class="mt-3 max-w-3xl text-lg leading-relaxed text-inkSoft">
+            Typed, or as a phone photo of a fault screen, or as a
+            30-second video clip of the noise the machine is making. The
+            system reads it, retrieves the relevant pages of the
+            relevant documents, and answers.
+          </p>
+        </div>
+      </li>
+
+      <li class="grid gap-8 md:grid-cols-12">
+        <div class="md:col-span-2">
+          <div class="font-display text-7xl font-medium text-gold leading-none">③</div>
+        </div>
+        <div class="md:col-span-10">
+          <h3 class="font-display text-3xl font-medium">Every claim is cited.</h3>
+          <p class="mt-3 max-w-3xl text-lg leading-relaxed text-inkSoft">
+            The answer points back to the exact page of the exact
+            document. If the AI doesn&rsquo;t know, the chat escalates
+            into a ticket routed to your team. Every resolved ticket
+            becomes a new entry in the knowledge base, so the next
+            customer with the same question doesn&rsquo;t have to wait.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+<!-- ─── FEATURE GRID ───────────────────────────────────────────────── -->
+<section id="features" class="border-t border-ink/10 bg-paperDeep/40 py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="font-display text-4xl font-medium leading-tight md:text-5xl">
+      Built for the way you actually <em class="italic wonk">support customers.</em>
+    </h2>
+
+    <div class="mt-14 grid gap-px overflow-hidden rounded-md border border-ink/15 bg-ink/15 md:grid-cols-2 lg:grid-cols-3">
+      <!-- 6 feature tiles separated by 1px ink hairlines via gap trick -->
+      <div class="bg-paper p-7">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-gold">grounded</div>
+        <h3 class="mt-2 font-display text-xl font-medium">Cited answers, not guesses.</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inkSoft">
+          Every claim links back to the exact page of the source
+          document. Open the citation; the customer can verify for
+          themselves.
+        </p>
+      </div>
+      <div class="bg-paper p-7">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-gold">scoped</div>
+        <h3 class="mt-2 font-display text-xl font-medium">Per-machine knowledge base.</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inkSoft">
+          A customer asking about <em>their</em> serial number sees
+          their machine&rsquo;s docs first &mdash; including private
+          quotes, sales orders, and customer-specific drawings.
+        </p>
+      </div>
+      <div class="bg-paper p-7">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-gold">white-label</div>
+        <h3 class="mt-2 font-display text-xl font-medium">Your brand, your domain.</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inkSoft">
+          The customer-facing portal carries your logo, your colors,
+          and lives at <span class="font-mono">support.yourcompany.com</span>.
+          Tracebook is invisible.
+        </p>
+      </div>
+      <div class="bg-paper p-7">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-gold">multi-modal</div>
+        <h3 class="mt-2 font-display text-xl font-medium">Photos and video clips.</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inkSoft">
+          The customer attaches a phone shot of a fault screen or a
+          30-second video of the machine sound. The system describes
+          it and uses the description to search.
+        </p>
+      </div>
+      <div class="bg-paper p-7">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-gold">closed loop</div>
+        <h3 class="mt-2 font-display text-xl font-medium">Tickets feed the loop.</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inkSoft">
+          Unresolved chats become tickets your technicians work on.
+          When the ticket resolves, the fix becomes a new entry in
+          the knowledge base &mdash; automatically.
+        </p>
+      </div>
+      <div class="bg-paper p-7">
+        <div class="font-mono text-[10px] uppercase tracking-eyebrow text-gold">isolated</div>
+        <h3 class="mt-2 font-display text-xl font-medium">Single-tenant, your data.</h3>
+        <p class="mt-2 text-sm leading-relaxed text-inkSoft">
+          Each OEM is a separately deployed instance on Google Cloud.
+          Your data does not cross tenant boundaries. Nothing trains
+          third-party models.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── LIVE CUSTOMER ──────────────────────────────────────────────── -->
+<section class="border-t border-ink/10 py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid items-center gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <h2 class="font-display text-4xl font-medium leading-tight md:text-5xl">
+          Live with a <em class="italic wonk">real OEM,</em> right now.
+        </h2>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-inkSoft">
+          Royal Master Grinders &mdash; a precision-grinder OEM with a
+          fleet of machines deployed across North America &mdash; runs
+          their entire customer support flow on Tracebook. Manuals,
+          drawings, training videos, and historical case files were
+          ingested in two weeks. Their service team has been answering
+          fewer 2 a.m. calls ever since.
+        </p>
+        <p class="mt-6 max-w-xl font-display italic text-lg leading-relaxed text-inkSoft">
+          &ldquo;That&rsquo;s exactly what I wanted to see. It&rsquo;s
+          just putting the pieces together &mdash; wow.&rdquo;
+          <span class="block mt-2 not-italic font-body text-sm text-inkMute">
+            &mdash; John, Royal Master Grinders, watching the system
+            diagnose a real Gen-X fault.
+          </span>
+        </p>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="border border-ink/30 bg-paper p-8 shadow-[0_2px_24px_rgba(26,26,26,0.06)]">
+          <div class="font-mono text-[10px] uppercase tracking-eyebrow text-gold">at-a-glance</div>
+          <dl class="mt-4 space-y-4 text-sm">
+            <div class="flex items-baseline justify-between border-b border-ink/15 pb-2">
+              <dt class="text-inkSoft">Machine fleet indexed</dt>
+              <dd class="font-mono text-base font-bold">50+ serials</dd>
+            </div>
+            <div class="flex items-baseline justify-between border-b border-ink/15 pb-2">
+              <dt class="text-inkSoft">Manuals + drawings</dt>
+              <dd class="font-mono text-base font-bold">800+ docs</dd>
+            </div>
+            <div class="flex items-baseline justify-between border-b border-ink/15 pb-2">
+              <dt class="text-inkSoft">Customer chat sessions</dt>
+              <dd class="font-mono text-base font-bold">live</dd>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <dt class="text-inkSoft">Time to first answer</dt>
+              <dd class="font-mono text-base font-bold">&lt; 45s typical</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── PRICING ────────────────────────────────────────────────────── -->
+<section class="border-t border-ink/10 py-20">
+  <div class="mx-auto max-w-6xl px-6 text-center">
+    <h2 class="font-display text-4xl font-medium leading-tight md:text-5xl">
+      Per-OEM SaaS. <em class="italic wonk">Quote-based.</em>
+    </h2>
+    <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-inkSoft">
+      Pricing scales with your machine fleet and document volume.
+      Smaller OEMs land lower than you&rsquo;d expect; bigger fleets
+      get bulk-tier rates. Reach out for a quote &mdash; we&rsquo;ll
+      ballpark in 24 hours.
+    </p>
+    <a href="mailto:cmisztur@mriiot.com?subject=Tracebook%20pricing"
+       class="mt-10 inline-flex items-center gap-2 rounded-md bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-inkSoft">
+      Get a quote
+      <span class="font-mono text-xs">→</span>
+    </a>
+  </div>
+</section>
+
+
+<!-- ─── FAQ ────────────────────────────────────────────────────────── -->
+<section id="faq" class="border-t border-ink/10 bg-paperDeep/40 py-24">
+  <div class="mx-auto max-w-4xl px-6">
+    <h2 class="font-display text-4xl font-medium leading-tight md:text-5xl">
+      The <em class="italic wonk">real</em> questions.
+    </h2>
+
+    <dl class="mt-12 divide-y divide-ink/15 border-t border-ink/15">
+      <details class="group py-6">
+        <summary class="flex cursor-pointer items-baseline justify-between gap-4 text-lg">
+          <span class="font-display text-xl">Where does my data live?</span>
+          <span class="font-mono text-sm text-inkMute group-open:hidden">+</span>
+          <span class="hidden font-mono text-sm text-inkMute group-open:inline">−</span>
+        </summary>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed text-inkSoft">
+          In your dedicated tenant on Google Cloud. Each OEM is a
+          separately deployed instance with its own database, file
+          storage, and vector index. Your data does not cross tenant
+          boundaries.
+        </p>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex cursor-pointer items-baseline justify-between gap-4 text-lg">
+          <span class="font-display text-xl">What happens if the AI doesn't know the answer?</span>
+          <span class="font-mono text-sm text-inkMute group-open:hidden">+</span>
+          <span class="hidden font-mono text-sm text-inkMute group-open:inline">−</span>
+        </summary>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed text-inkSoft">
+          The chat escalates into a ticket. A real technician on your
+          team takes over; the customer can attach files; the conversation
+          continues until resolved. The resolved ticket becomes structured
+          knowledge the next chat can retrieve from.
+        </p>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex cursor-pointer items-baseline justify-between gap-4 text-lg">
+          <span class="font-display text-xl">Do you train on my data?</span>
+          <span class="font-mono text-sm text-inkMute group-open:hidden">+</span>
+          <span class="hidden font-mono text-sm text-inkMute group-open:inline">−</span>
+        </summary>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed text-inkSoft">
+          No. Your data is not used to train any third-party model.
+          Inference happens on Google Vertex AI; retrieval happens
+          against your tenant&rsquo;s own vector index.
+        </p>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex cursor-pointer items-baseline justify-between gap-4 text-lg">
+          <span class="font-display text-xl">How long does setup take?</span>
+          <span class="font-mono text-sm text-inkMute group-open:hidden">+</span>
+          <span class="hidden font-mono text-sm text-inkMute group-open:inline">−</span>
+        </summary>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed text-inkSoft">
+          Two weeks for a typical OEM with ~10 machine models and a
+          few hundred documents. The bulk of that time is uploading
+          and tagging content &mdash; we run alongside you on it.
+        </p>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex cursor-pointer items-baseline justify-between gap-4 text-lg">
+          <span class="font-display text-xl">What machines / industries does this work for?</span>
+          <span class="font-mono text-sm text-inkMute group-open:hidden">+</span>
+          <span class="hidden font-mono text-sm text-inkMute group-open:inline">−</span>
+        </summary>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed text-inkSoft">
+          Anything where the customer is supported via written manuals,
+          schematics, and historical knowledge: precision tools,
+          packaging machines, food-and-beverage equipment, building
+          systems. The first deployed customer is in machine-tool
+          grinding; the same plumbing applies to any OEM with shipped
+          machines under warranty.
+        </p>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex cursor-pointer items-baseline justify-between gap-4 text-lg">
+          <span class="font-display text-xl">Can I use my own logo and domain?</span>
+          <span class="font-mono text-sm text-inkMute group-open:hidden">+</span>
+          <span class="hidden font-mono text-sm text-inkMute group-open:inline">−</span>
+        </summary>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed text-inkSoft">
+          Yes. The customer-facing portal lives at your subdomain
+          (<span class="font-mono">support.yourcompany.com</span> for
+          example) with your logo and brand colors. Tracebook does
+          not appear in the customer experience.
+        </p>
+      </details>
+
+      <details class="group py-6">
+        <summary class="flex cursor-pointer items-baseline justify-between gap-4 text-lg">
+          <span class="font-display text-xl">What does it cost?</span>
+          <span class="font-mono text-sm text-inkMute group-open:hidden">+</span>
+          <span class="hidden font-mono text-sm text-inkMute group-open:inline">−</span>
+        </summary>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed text-inkSoft">
+          Per-OEM SaaS, scaled by fleet size and document volume.
+          Email <a href="mailto:cmisztur@mriiot.com" class="text-ink underline decoration-gold underline-offset-2">cmisztur@mriiot.com</a>
+          for a 24-hour ballpark.
+        </p>
+      </details>
+    </dl>
+  </div>
+</section>
+
+
+<!-- ─── CTA ────────────────────────────────────────────────────────── -->
+<section class="border-t border-ink/10 py-28">
+  <div class="mx-auto max-w-3xl px-6 text-center">
+    <h2 class="font-display text-5xl font-medium leading-tight md:text-6xl">
+      Want to see it on
+      <em class="italic wonk">your</em> data?
+    </h2>
+    <p class="mt-6 text-lg text-inkSoft">
+      A 30-minute demo, plus a per-OEM ballpark within 24 hours.
+    </p>
+    <a href="mailto:cmisztur@mriiot.com?subject=Tracebook%20demo"
+       class="mt-10 inline-flex items-center gap-2 rounded-md bg-ink px-7 py-4 text-base font-medium text-paper hover:bg-inkSoft">
+      Email cmisztur@mriiot.com
+      <span class="font-mono text-sm">→</span>
+    </a>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
+<footer class="border-t border-ink/15 bg-paperDeep py-12">
+  <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 md:flex-row md:items-center">
+    <div>
+      <div class="flex items-baseline gap-3">
+        <span class="font-display italic text-2xl font-medium text-ink wonk-sm">tracebook</span>
+      </div>
+      <p class="mt-3 text-sm text-inkMute">
+        © 2026 MRIIOT, LLC. All rights reserved.
+      </p>
+    </div>
+    <div class="flex items-center gap-6 text-xs uppercase tracking-eyebrow text-inkMute">
+      <a href="mailto:cmisztur@mriiot.com" class="hover:text-ink">Contact</a>
+      <a href="#faq" class="hover:text-ink">FAQ</a>
+      <a href="#" class="hover:text-ink">Privacy</a>
+      <a href="#" class="hover:text-ink">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MRIIOT publication mark — fixed bottom-right, multiply blend -->
+<img src="assets/mriiot-logo-glow.png"
+     alt="MRIIOT"
+     class="brand-bug pointer-events-none fixed bottom-6 right-6 z-30 hidden h-auto w-24 opacity-80 md:block">
+
+
+<!-- Demo transcript — inlined so the page works via file:// (browsers
+     block fetch on file:// for security, which would otherwise leave
+     the chat empty when previewing without a local server). To edit,
+     change this block; the sibling assets/demo-conversation.json is
+     kept for reference and documentation only. -->
+<script id="chat-transcript" type="application/json">
+{
+  "machine": {
+    "model": "Generation X",
+    "serial": "SN-3648",
+    "customer": "Acme Manufacturing"
+  },
+  "turns": [
+    {
+      "role": "user",
+      "delay_ms": 800,
+      "text": "Linear motor not moving."
+    },
+    {
+      "role": "assistant",
+      "delay_ms": 1200,
+      "thinking_ms": 2200,
+      "text": "Linear-motor-not-moving is a common Gen X fault. Before we go into the drive electronics, let's rule out the basics:\n\n1. **Mechanical freedom** — does the carriage move freely by hand with the drive disabled?\n2. **Drive fault LEDs** — any red indicators on the Compax3 panel?\n3. **Limit switches** — are both end-of-travel switches reading their normal state?\n\nIf all three are clean, we'll go to the error history next.",
+      "citations": [
+        { "n": 1, "type": "manual", "title": "Compax3 Service Manual", "page": "p178" },
+        { "n": 2, "type": "historical_case", "title": "Linear motor — initial checklist" }
+      ]
+    },
+    {
+      "role": "user",
+      "delay_ms": 1500,
+      "text": "Mechanical is fine, no fault LEDs, limit switches green. Resistance across phases is fine but no encoder counts. Read head and tape look clean."
+    },
+    {
+      "role": "assistant",
+      "delay_ms": 1100,
+      "thinking_ms": 2600,
+      "text": "Encoder reading clean but no counts on the drive — that's a **feedback-level-low** error pattern, not a phase or motor problem. There's a Royal Master historical case where this exact symptom on a Gen X was traced back to **flex fatigue in the cable transport module**.",
+      "citations": [
+        { "n": 3, "type": "historical_case", "title": "Feedback level low — cable transport flex fatigue" },
+        { "n": 4, "type": "drawing", "title": "Cable Transport Module — Gen X", "page": "p4" }
+      ]
+    },
+    {
+      "role": "user",
+      "delay_ms": 1500,
+      "text": "Could it be the cable transport module?"
+    },
+    {
+      "role": "assistant",
+      "delay_ms": 900,
+      "thinking_ms": 2400,
+      "text": "**Primary suspect.** The historical case matches your symptoms exactly: feedback-level-low on the drive, encoder hardware testing clean, no fault LEDs upstream. The flex cables inside the transport module fatigue over machine-cycles and intermittently lose continuity — the encoder sees signal but the drive doesn't see counts. There's a YouTube walkthrough for the replacement.",
+      "citations": [
+        { "n": 3, "type": "historical_case", "title": "Feedback level low — cable transport flex fatigue" },
+        { "n": 5, "type": "youtube", "title": "Cable transport module replacement — Gen X" },
+        { "n": 6, "type": "manual", "title": "Compax3 Service Manual", "page": "p214" }
+      ],
+      "resolved": true
+    }
+  ]
+}
+</script>
+
+
+<!-- ─── CHAT REPLAY · vanilla JS ──────────────────────────────────── -->
+<script>
+(function () {
+  const root      = document.getElementById('chat-body');
+  const replay    = document.getElementById('chat-replay');
+  const status    = document.getElementById('chat-status');
+  const machineEl = document.getElementById('chat-machine');
+  if (!root) return;
+
+  // Source-type → small glyph + label for the citation chip tooltip.
+  const SOURCE_META = {
+    manual:           { glyph: '📘', label: 'Manual' },
+    drawing:          { glyph: '📐', label: 'Drawing' },
+    historical_case:  { glyph: '🗂',  label: 'Historical case' },
+    youtube:          { glyph: '▶',  label: 'YouTube' },
+    document:         { glyph: '📄', label: 'Document' },
+  };
+
+  let abortToken = 0;        // increments to abort an in-flight playthrough
+  let conversation = null;
+
+  // ─── element factories ─────────────────────────────────────────
+  function el(tag, cls, html) {
+    const e = document.createElement(tag);
+    if (cls)  e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+
+  // ─── markdown-ish rendering — inline bold + line breaks + lists
+  function renderMd(text) {
+    // Bold **x** → <strong>x</strong>
+    let out = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    // Numbered lines → <ol> if any begin with "1. ", "2. ", etc.
+    if (/^\s*\d+\.\s/m.test(out)) {
+      const lines = out.split('\n');
+      let html = '', inList = false;
+      for (const line of lines) {
+        const m = line.match(/^\s*\d+\.\s+(.+)$/);
+        if (m) {
+          if (!inList) { html += '<ol class="ml-5 list-decimal space-y-1 my-2">'; inList = true; }
+          html += `<li>${m[1]}</li>`;
+        } else {
+          if (inList) { html += '</ol>'; inList = false; }
+          if (line.trim()) html += `<p class="my-2">${line}</p>`;
+          else if (html && !html.endsWith('</p>')) html += '';
+        }
+      }
+      if (inList) html += '</ol>';
+      return html;
+    }
+    return out.split('\n\n').map(p => `<p class="my-2 first:mt-0 last:mb-0">${p.replace(/\n/g,'<br>')}</p>`).join('');
+  }
+
+  function userBubble() {
+    const wrap = el('div', 'flex justify-end');
+    const b = el('div',
+      'max-w-[80%] rounded-md border border-ink/25 bg-paperDeep px-4 py-2.5 text-sm leading-relaxed text-ink');
+    wrap.appendChild(b);
+    return { wrap, body: b };
+  }
+
+  function assistantBubble() {
+    const wrap = el('div', 'flex flex-col items-start gap-2');
+    const meta = el('div',
+      'flex items-center gap-2 font-mono text-[10px] uppercase tracking-eyebrow text-inkMute');
+    meta.innerHTML = '<span>Tracebook AI</span>';
+    const b = el('div',
+      'max-w-[88%] rounded-md bg-paper px-4 py-3 text-[15px] leading-relaxed text-ink shadow-[0_1px_0_rgba(26,26,26,0.06)]');
+    wrap.appendChild(meta);
+    wrap.appendChild(b);
+    return { wrap, body: b };
+  }
+
+  function citationsRow(citations) {
+    const row = el('div', 'mt-2 flex flex-wrap gap-2');
+    citations.forEach(c => {
+      const meta = SOURCE_META[c.type] || { glyph: '◦', label: c.type };
+      const chip = el('span',
+        'inline-flex items-center gap-1.5 rounded-full border border-gold bg-goldSoft/60 px-2.5 py-1 text-[11px] font-mono text-ink',
+        `<span class="font-bold">${c.n}</span><span class="opacity-70">${meta.glyph}</span><span>${c.title}${c.page ? ' · ' + c.page : ''}</span>`);
+      row.appendChild(chip);
+    });
+    return row;
+  }
+
+  function thinkingDots() {
+    const wrap = el('div', 'flex items-center gap-1.5 px-1 py-2');
+    for (let i = 0; i < 3; i++) {
+      const dot = el('span',
+        'h-1.5 w-1.5 rounded-full bg-inkMute animate-pulse',
+        '');
+      dot.style.animationDelay = (i * 200) + 'ms';
+      wrap.appendChild(dot);
+    }
+    return wrap;
+  }
+
+  // ─── animation helpers ─────────────────────────────────────────
+  function sleep(ms, token) {
+    return new Promise(r => setTimeout(() => r(token === abortToken), ms));
+  }
+
+  // Stream text into target by chunking — faster than per-char so the
+  // viewer absorbs at reading pace without it dragging.
+  async function streamText(target, fullHtml, token) {
+    // Render the full HTML invisibly to determine character count, then
+    // reveal progressively. Simpler approach: just set innerHTML at the
+    // end after a "typing" beat. Cleaner read on landing pages.
+    target.innerHTML = '';
+    target.style.opacity = '0';
+    target.innerHTML = fullHtml;
+    // Two-phase reveal: opacity 0→1 over ~280ms.
+    await sleep(40, token);
+    if (token !== abortToken) return;
+    target.style.transition = 'opacity 320ms ease-out';
+    target.style.opacity = '1';
+    await sleep(320, token);
+  }
+
+  // ─── main loop ─────────────────────────────────────────────────
+  async function play(token) {
+    root.innerHTML = '';
+    if (replay) replay.classList.add('hidden');
+
+    for (const turn of conversation.turns) {
+      if (token !== abortToken) return;
+
+      await sleep(turn.delay_ms || 700, token);
+      if (token !== abortToken) return;
+
+      if (turn.role === 'user') {
+        const { wrap, body } = userBubble();
+        root.appendChild(wrap);
+        body.innerHTML = turn.text;
+        scrollPin();
+        await sleep(280, token);
+      } else {
+        const { wrap, body } = assistantBubble();
+        const dots = thinkingDots();
+        body.appendChild(dots);
+        root.appendChild(wrap);
+        scrollPin();
+        await sleep(turn.thinking_ms || 1800, token);
+        if (token !== abortToken) return;
+        body.innerHTML = '';
+        await streamText(body, renderMd(turn.text), token);
+        if (turn.citations && turn.citations.length) {
+          await sleep(180, token);
+          if (token !== abortToken) return;
+          body.appendChild(citationsRow(turn.citations));
+        }
+        if (turn.resolved) {
+          if (status) status.textContent = '✓ resolved · cited from your library';
+        }
+        scrollPin();
+      }
+    }
+
+    if (replay) replay.classList.remove('hidden');
+  }
+
+  function scrollPin() {
+    root.scrollTop = root.scrollHeight;
+  }
+
+  // ─── kick off ──────────────────────────────────────────────────
+  // Read the transcript from the inline <script type="application/json">
+  // tag rather than fetching it. fetch() doesn't work on the file://
+  // protocol (browsers block it for security), so inlining keeps the
+  // page working when opened by double-click as well as when served.
+  try {
+    const node = document.getElementById('chat-transcript');
+    conversation = JSON.parse(node.textContent);
+    if (machineEl && conversation.machine) {
+      machineEl.textContent =
+        `${conversation.machine.model} · #${conversation.machine.serial}`;
+    }
+    // Start when the chat is in view, not on page load — feels more
+    // like the visitor is "watching it happen".
+    const obs = new IntersectionObserver((entries) => {
+      if (entries.some(e => e.isIntersecting)) {
+        obs.disconnect();
+        abortToken += 1;
+        play(abortToken);
+      }
+    }, { threshold: 0.25 });
+    obs.observe(document.getElementById('chat-demo'));
+  } catch (err) {
+    root.innerHTML =
+      '<p class="text-sm text-inkMute italic px-2 py-4">Demo conversation could not be parsed: '
+      + (err.message || err) + '</p>';
+  }
+
+  if (replay) {
+    replay.addEventListener('click', () => {
+      abortToken += 1;
+      if (status) status.textContent = 'tracebook.support · acme manufacturing';
+      play(abortToken);
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "machine": {
+    "model": "Generation X",
+    "serial": "SN-3648",
+    "customer": "Acme Manufacturing"
+  },
+  "turns": [
+    {
+      "role": "user",
+      "delay_ms": 800,
+      "text": "Linear motor not moving."
+    },
+    {
+      "role": "assistant",
+      "delay_ms": 1200,
+      "thinking_ms": 2200,
+      "text": "Linear-motor-not-moving is a common Gen X fault. Before we go into the drive electronics, let's rule out the basics:\n\n1. **Mechanical freedom** — does the carriage move freely by hand with the drive disabled?\n2. **Drive fault LEDs** — any red indicators on the Compax3 panel?\n3. **Limit switches** — are both end-of-travel switches reading their normal state?\n\nIf all three are clean, we'll go to the error history next.",
+      "citations": [
+        { "n": 1, "type": "manual", "title": "Compax3 Service Manual", "page": "p178" },
+        { "n": 2, "type": "historical_case", "title": "Linear motor — initial checklist" }
+      ]
+    },
+    {
+      "role": "user",
+      "delay_ms": 1500,
+      "text": "Mechanical is fine, no fault LEDs, limit switches green. Resistance across phases is fine but no encoder counts. Read head and tape look clean."
+    },
+    {
+      "role": "assistant",
+      "delay_ms": 1100,
+      "thinking_ms": 2600,
+      "text": "Encoder reading clean but no counts on the drive — that's a **feedback-level-low** error pattern, not a phase or motor problem. There's a Royal Master historical case where this exact symptom on a Gen X was traced back to **flex fatigue in the cable transport module**.",
+      "citations": [
+        { "n": 3, "type": "historical_case", "title": "Feedback level low — cable transport flex fatigue" },
+        { "n": 4, "type": "drawing", "title": "Cable Transport Module — Gen X", "page": "p4" }
+      ]
+    },
+    {
+      "role": "user",
+      "delay_ms": 1500,
+      "text": "Could it be the cable transport module?"
+    },
+    {
+      "role": "assistant",
+      "delay_ms": 900,
+      "thinking_ms": 2400,
+      "text": "**Primary suspect.** The historical case matches your symptoms exactly: feedback-level-low on the drive, encoder hardware testing clean, no fault LEDs upstream. The flex cables inside the transport module fatigue over machine-cycles and intermittently lose continuity — the encoder sees signal but the drive doesn't see counts. There's a YouTube walkthrough for the replacement.",
+      "citations": [
+        { "n": 3, "type": "historical_case", "title": "Feedback level low — cable transport flex fatigue" },
+        { "n": 5, "type": "youtube", "title": "Cable transport module replacement — Gen X" },
+        { "n": 6, "type": "manual", "title": "Compax3 Service Manual", "page": "p214" }
+      ],
+      "resolved": true
+    }
+  ]
+}
