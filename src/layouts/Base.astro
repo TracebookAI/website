@@ -1,0 +1,129 @@
+---
+// Shared shell: editorial head (palette / fonts / dotted grid), nav,
+// footer, MRIIOT mark. Pages fill the slot with sections.
+interface Props { title: string; description?: string }
+const { title, description = 'AI tech support grounded in your own documents.' } = Astro.props
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Public+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon — simple paper square with italic T -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FAF8F3'/%3E%3Ctext x='50%25' y='52%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-weight='600' font-size='20' fill='%231A1A1A'%3Et%3C/text%3E%3C/svg%3E">
+<script is:inline src="https://cdn.tailwindcss.com"></script>
+<script is:inline>
+    // Editorial palette + fonts. Mirrors marketing/.../retrieval-explainer/theme.ts.
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper:    '#FAF8F3',
+            paperDeep:'#F2EEE6',
+            ink:      '#1A1A1A',
+            inkSoft:  '#3D3D3D',
+            inkMute:  '#7A7A7A',
+            inkFaint: '#BDBDBD',
+            gold:     '#D4A93C',
+            goldSoft: '#F5E9C2',
+            dense:    '#E84F3D',
+            denseSoft:'#FBE3DF',
+            visual:   '#2D6E47',
+            visualSoft:'#D6E5DC',
+          },
+          fontFamily: {
+            display: ['Fraunces','Iowan Old Style','Georgia','serif'],
+            body:    ['"Public Sans"','-apple-system','sans-serif'],
+            mono:    ['"JetBrains Mono"','ui-monospace','Menlo','monospace'],
+          },
+          letterSpacing: {
+            eyebrow: '0.34em',
+            small:   '0.18em',
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      background: #FAF8F3;
+      color: #1A1A1A;
+      font-family: 'Public Sans', sans-serif;
+      /* faint dotted grid — same trick the videos use */
+      background-image: radial-gradient(rgba(26,26,26,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      background-position: 30px 30px;
+    }
+    /* Fraunces wonk axis on display italics for character */
+    .wonk { font-variation-settings: '"opsz" 96, "SOFT" 100, "WONK" 1'; }
+    .wonk-sm { font-variation-settings: '"opsz" 32, "SOFT" 100, "WONK" 0'; }
+    .hairline { height: 1px; background: #1A1A1A; }
+    .hairline-gold { height: 2px; background: #D4A93C; }
+
+    /* Smooth scroll for anchor links */
+    html { scroll-behavior: smooth; }
+
+    /* Section reveal — minimal animation */
+    section { scroll-margin-top: 4rem; }
+
+    /* MRIIOT bug stays bottom-right of viewport on desktop */
+    .brand-bug {
+      mix-blend-mode: multiply;
+      filter: saturate(0.9);
+    }
+  </style>
+</head>
+<body class="antialiased">
+<!-- ─── NAV ─────────────────────────────────────────────────────────── -->
+<header class="sticky top-0 z-40 border-b border-ink/10 bg-paper/85 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+    <a href="/" class="flex items-baseline gap-2">
+      <span class="font-display italic text-2xl font-medium text-ink wonk-sm">tracebook</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm">
+      <a href="/machine-oems" class="text-inkSoft hover:text-ink">Machine OEMs</a>
+      <a href="/maintenance" class="text-inkSoft hover:text-ink">Maintenance Teams</a>
+      <a href="/automotive" class="text-inkSoft hover:text-ink">Car Manuals <span class="font-mono text-[10px] uppercase text-gold">demo</span></a>
+      <a href="mailto:cmisztur@mriiot.com" class="rounded-md bg-ink px-3 py-1.5 text-paper hover:bg-inkSoft">
+        Get a demo
+      </a>
+    </nav>
+  </div>
+</header>
+
+<slot />
+<!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
+<footer class="border-t border-ink/15 bg-paperDeep py-12">
+  <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 md:flex-row md:items-center">
+    <div>
+      <div class="flex items-baseline gap-3">
+        <span class="font-display italic text-2xl font-medium text-ink wonk-sm">tracebook</span>
+      </div>
+      <p class="mt-3 text-sm text-inkMute">
+        © 2026 MRIIOT, LLC. All rights reserved.
+      </p>
+    </div>
+    <div class="flex items-center gap-6 text-xs uppercase tracking-eyebrow text-inkMute">
+      <a href="mailto:cmisztur@mriiot.com" class="hover:text-ink">Contact</a>
+      <a href="#faq" class="hover:text-ink">FAQ</a>
+      <a href="#" class="hover:text-ink">Privacy</a>
+      <a href="#" class="hover:text-ink">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MRIIOT publication mark — fixed bottom-right, multiply blend -->
+<img src="/assets/mriiot-logo-glow.png"
+     alt="MRIIOT"
+     class="brand-bug pointer-events-none fixed bottom-6 right-6 z-30 hidden h-auto w-24 opacity-80 md:block">
+
+
+
+</body>
+</html>

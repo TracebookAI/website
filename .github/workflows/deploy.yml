@@ -1,0 +1,37 @@
+# Build the Astro site and deploy to GitHub Pages.
+#
+# CUTOVER NOTE: this workflow only takes effect once the repo's Pages
+# settings are switched from "deploy from branch" to "GitHub Actions"
+# — do that deliberately, together with merging the rebuild (see
+# DESIGN.md). Until then pushes build (CI signal) but don't publish.
+
+name: deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: withastro/action@v3
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

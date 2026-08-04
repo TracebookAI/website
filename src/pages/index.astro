@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro'
+
+const verticals = [
+  {
+    href: '/machine-oems',
+    eyebrow: 'for machine OEMs',
+    title: 'Tracebook Support',
+    body: 'Your manuals, your tickets, your brand. Customers get cited AI answers at 2 a.m.; unresolved chats become tickets; resolved tickets teach the AI.',
+    cta: 'The OEM story',
+    demo: 'Live customer: Royal Master Grinders',
+  },
+  {
+    href: '/maintenance',
+    eyebrow: 'for factories',
+    title: 'Tracebook Maintenance',
+    body: 'Operators report a problem from the machine with a photo. Your maintenance techs investigate with AI over every manual you own — and every fix your team ever made.',
+    cta: 'The maintenance story',
+    demo: 'Demo: operator → tech workflow',
+  },
+  {
+    href: '/automotive',
+    eyebrow: 'see it live',
+    title: 'Search a real manual set',
+    body: 'Pick a car, pick a year, ask anything. Cited answers straight from the factory manuals — the same engine that powers every Tracebook deployment.',
+    cta: 'Try the search demo',
+    demo: 'Dodge Viper manuals',
+  },
+]
+---
+<Base title="Tracebook — AI answers grounded in your own documents">
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="mx-auto max-w-6xl px-6 pt-20 pb-14 text-center">
+    <div class="font-mono text-xs font-bold uppercase tracking-eyebrow text-gold">
+      &#8982; grounded, cited AI answers
+    </div>
+    <h1 class="mx-auto mt-6 max-w-3xl font-display text-5xl font-medium leading-[0.98] tracking-tight text-ink md:text-6xl">
+      Machines break. <em class="italic wonk">The answer is in a manual.</em>
+    </h1>
+    <p class="mx-auto mt-8 max-w-2xl font-display italic text-lg leading-relaxed text-inkSoft md:text-xl">
+      Tracebook turns shelves of PDFs, drawings, videos, and hard-won fixes
+      into an AI that answers with citations — page, paragraph, and drawing.
+      One engine, three ways to put it to work.
+    </p>
+  </div>
+</section>
+
+<!-- VERTICALS -->
+<section class="border-t border-ink/10 bg-paperDeep/40 py-20">
+  <div class="mx-auto grid max-w-6xl gap-6 px-6 md:grid-cols-3">
+    {verticals.map((v) => (
+      <a href={v.href} class="group flex flex-col rounded-lg border border-ink/10 bg-paper p-7 transition-shadow hover:shadow-lg">
+        <div class="font-mono text-[11px] font-bold uppercase tracking-eyebrow text-gold">{v.eyebrow}</div>
+        <h2 class="mt-3 font-display text-2xl font-medium leading-tight text-ink">{v.title}</h2>
+        <p class="mt-3 flex-1 text-sm leading-relaxed text-inkSoft">{v.body}</p>
+        <div class="mt-5 text-xs font-mono uppercase tracking-small text-inkMute">{v.demo}</div>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-gold decoration-2 underline-offset-4 group-hover:text-inkSoft">
+          {v.cta} <span class="font-mono text-xs">&rarr;</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- HOW (condensed) -->
+<section class="border-t border-ink/10 py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="font-display text-4xl font-medium leading-tight md:text-5xl">
+      One engine under every story
+    </h2>
+    <div class="mt-10 grid gap-8 md:grid-cols-3">
+      <div>
+        <div class="font-mono text-xs font-bold uppercase tracking-eyebrow text-gold">1 &middot; ingest</div>
+        <p class="mt-3 text-sm leading-relaxed text-inkSoft">
+          Manuals, drawings, spec sheets, videos. Text and the pages
+          themselves are indexed — tables, schematics, exploded views.
+        </p>
+      </div>
+      <div>
+        <div class="font-mono text-xs font-bold uppercase tracking-eyebrow text-gold">2 &middot; answer</div>
+        <p class="mt-3 text-sm leading-relaxed text-inkSoft">
+          Questions retrieve the right pages for the right model and
+          configuration. Every claim carries a citation you can click.
+        </p>
+      </div>
+      <div>
+        <div class="font-mono text-xs font-bold uppercase tracking-eyebrow text-gold">3 &middot; learn</div>
+        <p class="mt-3 text-sm leading-relaxed text-inkSoft">
+          Resolved problems become knowledge-base cases the AI retrieves
+          next time. The system gets smarter with every fix.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="border-t border-ink/10 py-24">
+  <div class="mx-auto max-w-3xl px-6 text-center">
+    <h2 class="font-display text-4xl font-medium leading-tight md:text-5xl">
+      Fifteen minutes, <em class="italic wonk">your own PDFs.</em>
+    </h2>
+    <p class="mx-auto mt-6 max-w-xl font-display italic text-lg text-inkSoft">
+      Bring a manual and a hard question. We&rsquo;ll show you the answer — cited.
+    </p>
+    <a href="mailto:cmisztur@mriiot.com?subject=Tracebook%20demo"
+       class="mt-8 inline-flex items-center gap-2 rounded-md bg-ink px-6 py-3 text-sm font-medium text-paper hover:bg-inkSoft">
+      Book a demo <span class="font-mono text-xs">&rarr;</span>
+    </a>
+  </div>
+</section>
+</Base>

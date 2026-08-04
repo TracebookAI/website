@@ -1,3 +1,9 @@
+# tracebook.ai
+
+Astro-built 3-vertical site (see DESIGN.md). `npm install && npm run dev` to work on it; deploys via .github/workflows/deploy.yml once Pages is switched to workflow builds.
+
+---
+
 # tracebook.ai — landing page
 
 Single-page static landing site for Tracebook. Pure HTML + Tailwind via
