@@ -251,6 +251,29 @@ import Base from '../layouts/Base.astro'
 </section>
 
 
+<!-- ─── LIVE DEMO WIDGET ───────────────────────────────────────────── -->
+<section class="border-t border-ink/10 py-24">
+  <div class="mx-auto max-w-3xl px-6">
+    <h2 class="text-center font-display text-4xl font-medium leading-tight md:text-5xl">
+      Try it, <em class="italic wonk">right here</em>
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-center font-display italic text-lg text-inkSoft">
+      This is the exact experience your customers would get — pointed at
+      a demo equipment library instead of yours.
+    </p>
+    <div class="mt-10 rounded-lg border border-ink/15 bg-paper p-8"
+         data-tracebook-demo="support"
+         data-api="https://support.demo.tracebook.ai">
+      <div class="text-center">
+        <div class="font-mono text-xs font-bold uppercase tracking-eyebrow text-gold">live demo</div>
+        <div class="mt-4 inline-flex items-center gap-3 rounded-md border border-ink/15 bg-paperDeep/60 px-5 py-3 text-sm text-inkMute">
+          coming online
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── LIVE CUSTOMER ──────────────────────────────────────────────── -->
 <section class="border-t border-ink/10 py-24">
   <div class="mx-auto max-w-6xl px-6">
@@ -723,4 +746,5 @@ import Base from '../layouts/Base.astro'
 </script>
 
 
+<script is:inline src="/widget/tracebook-demo-widget.js" defer></script>
 </Base>
