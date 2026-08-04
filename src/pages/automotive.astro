@@ -23,6 +23,8 @@ import Base from '../layouts/Base.astro'
 <section class="border-t border-ink/10 bg-paperDeep/40 py-24">
   <div class="mx-auto max-w-3xl px-6">
     <div id="tracebook-demo-slot"
+         data-tracebook-demo="automotive"
+         data-api="https://automotive.demo.tracebook.ai"
          class="rounded-lg border border-ink/15 bg-paper p-10 text-center">
       <div class="font-mono text-xs font-bold uppercase tracking-eyebrow text-gold">the search box goes here</div>
       <p class="mx-auto mt-4 max-w-md font-display italic text-lg text-inkSoft">
@@ -65,4 +67,5 @@ import Base from '../layouts/Base.astro'
     </div>
   </div>
 </section>
+<script is:inline src="/widget/tracebook-demo-widget.js" defer></script>
 </Base>
