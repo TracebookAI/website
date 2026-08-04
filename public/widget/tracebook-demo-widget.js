@@ -74,4 +74,4 @@ Error generating stack: `+u.message+`
 .tbw-ask button:disabled{opacity:.4;cursor:default}
 .tbw-hint{margin-top:6px;font-size:12px;color:#7A7A7A}
 .tbw-error{margin-top:10px;font-size:13px;color:#E84F3D}
-`;function Ai(){const O=document.querySelectorAll("[data-tracebook-demo]");if(O.length===0)return;const L=document.createElement("style");L.textContent=Gy,document.head.appendChild(L),O.forEach(X=>{const v=(X.dataset.api??"").replace(/\/$/,"");v&&fetch(`${v}/api/demo/catalog`,{method:"HEAD"}).catch(()=>null).then(nl=>{!nl||!nl.ok||(X.innerHTML="",qy.createRoot(X).render(el.jsx(xy,{base:v})))})})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",Ai):Ai()})();
+`;function Ai(){const O=document.querySelectorAll("[data-tracebook-demo]");if(O.length===0)return;const L=document.createElement("style");L.textContent=Gy,document.head.appendChild(L),O.forEach(X=>{const v=(X.dataset.api??"").replace(/\/$/,"");v&&fetch(`${v}/api/demo/catalog`).catch(()=>null).then(nl=>{!nl||!nl.ok||(X.innerHTML="",qy.createRoot(X).render(el.jsx(xy,{base:v})))})})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",Ai):Ai()})();
