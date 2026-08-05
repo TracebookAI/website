@@ -95,7 +95,8 @@ Error generating stack: `+i.message+`
 .tbw-a table{border-collapse:collapse;margin:8px 0;font-size:13px}
 .tbw-a th,.tbw-a td{border:1px solid rgba(26,26,26,.2);padding:4px 8px}
 .tbw-a code{background:#F2EEE6;border-radius:3px;padding:0 4px;font-size:12.5px}
-.tbw-thinking{color:#7A7A7A;font-style:italic}
+.tbw-thinking{display:inline-block;font-style:italic;background:linear-gradient(90deg,#9A9A9A 35%,#1A1A1A 50%,#9A9A9A 65%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:tbw-shimmer 1.4s linear infinite}
+@keyframes tbw-shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
 .tbw-cite-link{border:none;background:#F5E9C2;color:#1A1A1A;border-radius:4px;padding:0 4px;margin:0 1px;font-size:11px;font-weight:600;cursor:pointer;vertical-align:baseline}
 .tbw-cite-link:hover{background:#D4A93C}
 .tbw-refs{margin-top:14px;border-top:1px solid rgba(26,26,26,.12);padding-top:10px}
