@@ -86,7 +86,7 @@ Error generating stack: `+i.message+`
 .tbw-reset{border:none;background:none;font-size:12px;color:#7A7A7A;cursor:pointer}
 .tbw-reset:hover{color:#1A1A1A}
 .tbw-thread{margin-top:16px;max-height:420px;overflow-y:auto;padding-right:4px}
-.tbw-q{font-weight:600;font-size:14px;margin-top:14px}
+.tbw-q{width:fit-content;max-width:85%;margin-left:auto;margin-top:18px;background:#1A1A1A;color:#FAF8F3;padding:9px 15px;border-radius:14px 14px 4px 14px;font-weight:600;font-size:14px;line-height:1.4}
 .tbw-a{margin-top:6px;font-size:14px;line-height:1.65}
 .tbw-a p{margin:8px 0}
 .tbw-a ul,.tbw-a ol{margin:8px 0;padding-left:22px}
