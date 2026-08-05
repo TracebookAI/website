@@ -56,21 +56,51 @@ import Base from '../layouts/Base.astro'
   </div>
 </section>
 
-<!-- LIVE DEMO (placeholder until VM) -->
+<!-- LIVE DEMO — portals + demo accounts -->
 <section class="border-t border-ink/10 py-24">
-  <div class="mx-auto max-w-3xl px-6 text-center">
-    <h2 class="font-display text-4xl font-medium leading-tight md:text-5xl">
+  <div class="mx-auto max-w-4xl px-6">
+    <h2 class="text-center font-display text-4xl font-medium leading-tight md:text-5xl">
       Walk the loop yourself
     </h2>
-    <p class="mx-auto mt-6 max-w-xl font-display italic text-lg text-inkSoft">
-      The live demo plant — operator portal and technician portal with
-      demo accounts — is coming online.
+    <p class="mx-auto mt-4 max-w-xl text-center font-display italic text-lg text-inkSoft">
+      Two portals, one demo plant. File a problem as the operator, then
+      switch hats and investigate it with AI as the tech.
     </p>
-    <div class="mt-8 inline-flex items-center gap-3 rounded-md border border-ink/15 bg-paperDeep/60 px-5 py-3 text-sm text-inkMute">
-      <span class="font-mono text-xs uppercase tracking-small">live demo</span> coming online
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <a href="https://maintenance.demo.tracebook.ai" target="_blank" rel="noreferrer"
+         class="group rounded-lg border border-ink/15 bg-paper p-7 transition-shadow hover:shadow-lg">
+        <div class="font-mono text-[11px] font-bold uppercase tracking-eyebrow text-gold">step 1 · the floor</div>
+        <h3 class="mt-3 font-display text-2xl font-medium text-ink">Operator portal</h3>
+        <p class="mt-3 text-sm leading-relaxed text-inkSoft">
+          Pick MILL-01 or LATHE-02, hit "Report a problem," describe a
+          breakdown, attach a photo if you like.
+        </p>
+        <div class="mt-4 rounded-md bg-paperDeep/60 px-3 py-2 font-mono text-xs text-inkSoft">
+          op@demo.tracebook.ai · password
+        </div>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-gold decoration-2 underline-offset-4 group-hover:text-inkSoft">
+          Open the operator portal <span class="font-mono text-xs">&rarr;</span>
+        </div>
+      </a>
+      <a href="https://technician.maintenance.demo.tracebook.ai" target="_blank" rel="noreferrer"
+         class="group rounded-lg border border-ink/15 bg-paper p-7 transition-shadow hover:shadow-lg">
+        <div class="font-mono text-[11px] font-bold uppercase tracking-eyebrow text-gold">step 2 · maintenance</div>
+        <h3 class="mt-3 font-display text-2xl font-medium text-ink">Technician portal</h3>
+        <p class="mt-3 text-sm leading-relaxed text-inkSoft">
+          Open the ticket you just filed and hit "Investigate with AI" —
+          the session arrives already knowing the report and the photo.
+        </p>
+        <div class="mt-4 rounded-md bg-paperDeep/60 px-3 py-2 font-mono text-xs text-inkSoft">
+          tech@demo.tracebook.ai · password
+        </div>
+        <div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-gold decoration-2 underline-offset-4 group-hover:text-inkSoft">
+          Open the technician portal <span class="font-mono text-xs">&rarr;</span>
+        </div>
+      </a>
     </div>
-    <p class="mt-10 text-sm text-inkSoft">
-      Can&rsquo;t wait? <a href="mailto:cmisztur@mriiot.com?subject=Tracebook%20Maintenance%20demo" class="font-medium text-ink underline decoration-gold decoration-2 underline-offset-4">Book fifteen minutes</a> and bring your worst recurring breakdown.
+    <p class="mt-8 text-center text-xs italic text-inkMute">
+      Shared demo accounts — anything you file is visible to other
+      visitors and cleared periodically.
     </p>
   </div>
 </section>
