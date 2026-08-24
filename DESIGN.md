@@ -12,7 +12,6 @@ three demos:
 | Vertical | Audience | The demo | AI presented as |
 |---|---|---|---|
 | `/machine-oems` | OEM owners / heads-of-service | support-demo instance | inline chat widget (v1) framed "what YOUR customers see, in YOUR brand" + "explore the full portal" demo login |
-| `/maintenance` | plant / maintenance managers | maintenance-demo instance | guided WORKFLOW walkthrough (operator files ticket w/ photo → tech's Investigate-with-AI cited session) + live portal links w/ demo accounts. A lone chat box can't sell a two-sided workflow. |
 | `/automotive` | everyone (the flagship wow) | automotive-demo instance (Viper manuals, Stellantis small-scale permission) | inline NO-LOGIN live search widget: model/year picker + one box, cited answer streams on the page (v1) |
 
 The hub (`/`) sells the product line in one screen and routes by
@@ -41,14 +40,12 @@ src/layouts/Base.astro     head (fonts/palette/grid) + nav + footer + MRIIOT mar
 src/pages/index.astro      HUB: hero, three vertical cards, condensed how-it-works, CTA
 src/pages/machine-oems.astro   ported current landing (hero + chat replay, problem,
                                how, features, live customer, pricing, FAQ, CTA)
-src/pages/maintenance.astro    workflow story: 3-step walkthrough (report → investigate
-                               → knowledge that compounds), demo CTAs (disabled until VM)
 src/pages/automotive.astro     search story: widget slot (placeholder until /api/demo/*),
                                how citations work, Stellantis-permission footnote
 public/assets/*            existing videos/logos carried over
 ```
 
-Nav (all pages): Machine OEMs · Maintenance Teams · Car Manuals (live
+Nav (all pages): Machine OEMs · Car Manuals (live
 demo) · Get a demo (mailto, unchanged).
 
 ## The demo widget (v1 — not in this pass)

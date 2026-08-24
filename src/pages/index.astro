@@ -11,14 +11,6 @@ const verticals = [
     demo: 'Live customer: Royal Master Grinders',
   },
   {
-    href: '/maintenance',
-    eyebrow: 'for factories',
-    title: 'Tracebook Maintenance',
-    body: 'Operators report a problem from the machine with a photo. Your maintenance techs investigate with AI over every manual you own — and every fix your team ever made.',
-    cta: 'The maintenance story',
-    demo: 'Demo: operator → tech workflow',
-  },
-  {
     href: '/automotive',
     eyebrow: 'see it live',
     title: 'Search a real manual set',
@@ -48,7 +40,7 @@ const verticals = [
 
 <!-- VERTICALS -->
 <section class="border-t border-ink/10 bg-paperDeep/40 py-20">
-  <div class="mx-auto grid max-w-6xl gap-6 px-6 md:grid-cols-3">
+  <div class="mx-auto grid max-w-4xl gap-6 px-6 md:grid-cols-2">
     {verticals.map((v) => (
       <a href={v.href} class="group flex flex-col rounded-lg border border-ink/10 bg-paper p-7 transition-shadow hover:shadow-lg">
         <div class="font-mono text-[11px] font-bold uppercase tracking-eyebrow text-gold">{v.eyebrow}</div>
